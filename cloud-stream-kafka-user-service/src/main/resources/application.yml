@@ -1,3 +1,5 @@
+server:
+  port: 8084
 spring:
   cloud:
     stream:
@@ -14,7 +16,7 @@ spring:
          group: input-group-1
         output:
           binder: kafka
-          destination: test
+          destination: accTopic
           group: output-group-1
           content-type: application/json
       

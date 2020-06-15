@@ -12,31 +12,31 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
-public class Controller {
+public class AccountController {
 
 	private AccountService accountService;
 
-	public Controller(AccountService accountService) {
+	public AccountController(AccountService accountService) {
 		super();
 		this.accountService = accountService;
 	}
 
-	@PostMapping(value = "/api/sendAccount")
-	public String sendUser(@RequestBody Account payload) {
+	@PostMapping(value = "/api/sendAcc")
+	public String sendAccount(@RequestBody Account payload) {
 		return accountService.send(payload);
 	}
 
 
 
 	//    -------------- WebSocket API ----------------
-	@MessageMapping("/sendMessage")
+	@MessageMapping("/sendAcc")
 	@SendTo("/test/group")
 	public Account broadcastGroupMessage(@Payload Account account) {
 		//Sending this message to all the subscribers
 		return account;
 	}
 
-	@MessageMapping("/newUser")
+	@MessageMapping("/newAccount")
 	@SendTo("/test/group")
 	public Account addUser(@Payload Account account,
 						   SimpMessageHeaderAccessor headerAccessor) {

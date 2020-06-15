@@ -2,6 +2,7 @@ package com.test.scs.msg;
 
 
 import com.test.scs.model.Account;
+import com.test.scs.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,13 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 public class Consumer {
 
 	private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
+
     @Autowired
     SimpMessagingTemplate template;
+
+	@Autowired
+	AccountService accountService;
+
 
 	@StreamListener(target = Sink.INPUT)
 	public void consume(String message) {
@@ -27,7 +33,8 @@ public class Consumer {
 
 	@StreamListener(target = Sink.INPUT, condition = "headers['type']=='user'")
 	public void handle(@Payload Account account) {
-		logger.info("Received a User message : [{}]: {} {} {}", account.getId(), account.getAccountNo());
+		logger.info("Received a Account message : [{}]: {} {} {}", account.getId(), account.getAccountNo());
+		accountService.send(account);
         template.convertAndSend("/test/group", account);
 	}
 }
