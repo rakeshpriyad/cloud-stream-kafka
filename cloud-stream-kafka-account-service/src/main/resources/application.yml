@@ -14,7 +14,7 @@ spring:
          group: input-group-1
         output:
           binder: kafka
-          destination: accTopic
+          destination: userTopic
           group: output-group-1
           content-type: application/json
       

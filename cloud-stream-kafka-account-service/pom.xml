@@ -3,17 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.0.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>com.test.cs</groupId>
+		<artifactId>cloud-stream-kafka</artifactId>
+		<version>1.1</version>
 	</parent>
-	<groupId>com.test</groupId>
-	<artifactId>cloud-stream-kafka-user-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>cloud-stream-kafka-user-service</name>
-	<description>Spring Cloud Stream and Kafka User Service</description>
+	<groupId>com.test.cs</groupId>
+	<artifactId>cloud-stream-kafka-account-service</artifactId>
+	<name>cloud-stream-kafka-account-service</name>
+	<description>Spring Cloud Stream and Kafka Account Service</description>
 
 	<properties>
 		<java.version>1.8</java.version>

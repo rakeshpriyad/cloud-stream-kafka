@@ -1,40 +1,34 @@
-import React, { Component } from 'react';
-
+import React from 'react'
 import { green } from '@material-ui/core/colors';
-import { render } from '@testing-library/react';
-export class Messages extends Component {
-    
- //Messages = ({ messages, currentUser }) => {
-    constructor(props) {
-        super(props)
-    
-        
-    }
 
-    
+const Messages = ({ messages, currentUser }) => {
 
-    render() {
-       // const { userId, accountNo, userName } = this.state
-    return (
-        <ul className="messages-list">
-            {this.props.messages.map(user => 
-                <li className={user.userName}>
+    let renderMessage = (message) => {
+        const { userId, accountNo, username } = message;
+        const messageFromMe = currentUser.userId === message.userId;
+        const className = messageFromMe ? "Messages-message currentUser" : "Messages-message";
+        return (
+            <li className={className}>
                 <span
                     className="avatar"
                     style={{ backgroundColor: green }}
                 />
                 <div className="Message-content">
                     <div className="username">
-                        {user.userId}
+                        {userId}
                     </div>
-                    <div className="text">{user.accountNo}</div>
+                    <div className="text">{accountNo}</div>
                 </div>
             </li>
-                )}
+        );
+    };
+
+    return (
+        <ul className="messages-list">
+            {messages.map(msg => renderMessage(msg))}
         </ul>
     )
-  }
 }
 
 
-export default Messages;
+export default Messages

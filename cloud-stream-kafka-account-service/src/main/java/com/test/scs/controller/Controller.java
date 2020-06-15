@@ -1,4 +1,4 @@
-package com.test.scs;
+package com.test.scs.controller;
 
 import com.test.scs.model.Account;
 import com.test.scs.service.AccountService;
@@ -17,12 +17,11 @@ public class Controller {
 	private AccountService accountService;
 
 	public Controller(AccountService accountService) {
-
 		super();
 		this.accountService = accountService;
 	}
 
-	@PostMapping(value = "/api/sendUser")
+	@PostMapping(value = "/api/sendAccount")
 	public String sendUser(@RequestBody Account payload) {
 		return accountService.send(payload);
 	}
